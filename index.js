@@ -1,16 +1,41 @@
-const express = require("express");
+const express = require('express')
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const router = express.Router();
+const path = require('path');
+// const importData = require("./data.json");
+
 const app = express();
-const importData = require("./data.json");
-let port = process.env.PORT || 3000;
+const port = 3000;
 
-app.get("/", (req, res) => {
-    res.send("Hello world");
+// Where we will keep faces
+let faces = [];
+
+app.use(cors());
+
+// Configuring body parser middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname+'/index.html'));
 })
 
-app.get("/players", (req, res) => {
-    res.send(importData);
-})
+app.get('/faces', (req, res) => {
+    res.json(faces);
+});
 
-app.listen(port, () => {
-    console.log('example is listening on http://localhost:', port);
-})
+app.post('/face', (req, res) => {
+    const face = req.body;
+
+    // Output the face to the console for debugging
+    console.log(face);
+    faces.push(face);
+
+    res.send('Added!');
+    // We will be coding here
+});
+
+//add the router
+app.use('/', router);
+app.listen(port, () => console.log(`Hello world app listening on port ${port}!`));

@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- This will make Spidx Web Button responsive for smaller screens -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- The JavaScript library imported below will provide all the necessary files to add the Spidx button into your website. -->
+    <script src="https://resources.spidx.app/spidx_auth.js"></script>
+    <!-- <script src="https://resources-homol.spidx.app/spidx_auth.js"></script> -->
+    
+    <script>
+      window.onload = () => {
+            window.SpidxAuth.init({
+                apiKey: 'DC574F7B-4348-4120-859F-3ACCB28715E2',       // Change to your API Key
+                useCaseId: '349F9AB3-5134-470B-BD59-EF88C1ECB0A2',  // Change to your Use Case ID
+                elemId: 'spidx-auth',
+                environment: 'PROD'
+            })
+            
+            window.SpidxAuth.transactionCallback = async (data) => {
+                if (data.transactionStatus == 'OK') {
+                    let collection = await window.SpidxAuth.collect(data.transactionId);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div style='width: 100vw; height: 100vh'>
+        <div class='spidx-button' data-layout_setup='no-button' id='spidx-auth'></div>
+    </div>
+</body>
+</html>
