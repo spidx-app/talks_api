@@ -1,0 +1,23 @@
+{
+  "name": "talks_api",
+  "version": "1.0.0",
+  "description": "Node API for Griaule Talks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github-spidx:spidx-app/talks_api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3"
+  },
+
+  "engines": {
+    "node": "14.18.0"
+  }
+}
