@@ -16,8 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-    // res.sendFile(__dirname+'/index.html');
-    res.send("Hello");
+    res.sendFile(__dirname+'/index.html');
 })
 
 app.get('/faces', (req, res) => {
